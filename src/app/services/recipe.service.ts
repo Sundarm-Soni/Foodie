@@ -13,7 +13,7 @@ export class RecipeService {
       new Ingredient('Meat',1),
       new Ingredient('FrenchFries',2)
     ]),
-    new Recipe('Burger', 'This is simply a test', '../../assets/junk-food-turns-kid-blind.jpg',[
+    new Recipe('Burger', 'This is simply a test', '../../assets/burger.jpg',[
       new Ingredient('Buns',1),
       new Ingredient('Cheese',2)
     ])
