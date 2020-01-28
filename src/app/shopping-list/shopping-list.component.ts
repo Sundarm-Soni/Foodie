@@ -7,7 +7,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: Ingredient[];
   private subscription: Subscription;
 
@@ -16,7 +16,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
 
     this.ingredients = this.shoppingList.getIngredients();
-    this.shoppingList.ingredientsChanged
+   this.subscription = this.shoppingList.ingredientsChanged
     .subscribe(
       (ingredients: Ingredient[])=>{
         this.ingredients = ingredients;
@@ -29,7 +29,9 @@ export class ShoppingListComponent implements OnInit {
 
   }
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    
+      this.subscription.unsubscribe();
+    
 
   }
   

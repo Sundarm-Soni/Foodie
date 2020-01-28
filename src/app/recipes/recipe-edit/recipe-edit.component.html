@@ -3,8 +3,8 @@
         <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
             <div class="row">
              <div class="col-xs-12">
-                <button type = "submit" class="btn btn-success">Save</button>
-                <button type = "submit" class="btn btn-danger" style="margin-left: 5px;">Cancel</button>
+                <button type = "submit" class="btn btn-success" [disabled]="recipeForm.invalid && recipeForm.touched">Save</button>
+                <button class="btn btn-danger" style="margin-left: 5px;" (click)="onCancel()">Cancel</button>
             </div>   
             </div>
             <div class="row">
@@ -23,13 +23,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <img src="" alt="" class="img-responsive">
-
-                </div>
-            </div>
-            <div class="row">
+            
+                <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="description">Description</label>
@@ -56,7 +51,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-success" (click)="onAddIngredient()" style="margin-top: 5px;">Add Ingredients</button>
+                        <button class="btn btn-success" (click)="onAddIngredient()" style="margin-top: 5px;" [disabled]="recipeForm.invalid && recipeForm.touched">Add Ingredients</button>
                     </div>
                 </div>
 
