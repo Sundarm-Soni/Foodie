@@ -11,17 +11,28 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
   constructor(private slSservice: ShoppingListService) { }
-  private recipes: Recipe[] = [
-    new Recipe('North Indian', 'Good Maincourse', '../../assets/merlin_146234352_d7bc8486-b067-4cff-a4c0-7741f166fb60-articleLarge.jpg',[
-      new Ingredient('Meat',1),
-      new Ingredient('FrenchFries',2)
-    ]),
-    new Recipe('Burger', 'This is simply a test', '../../assets/burger.jpg',[
-      new Ingredient('Buns',1),
-      new Ingredient('Cheese',2)
-    ])
+  // private recipes: Recipe[] = [
+  //   new Recipe('North Indian', 'Good Maincourse', '../../assets/merlin_146234352_d7bc8486-b067-4cff-a4c0-7741f166fb60-articleLarge.jpg',[
+  //     new Ingredient('Meat',1),
+  //     new Ingredient('FrenchFries',2)
+  //   ]),
+  //   new Recipe('Burger', 'This is simply a test', '../../assets/burger.jpg',[
+  //     new Ingredient('Buns',1),
+  //     new Ingredient('Cheese',2)
+  //   ])
 
-  ];
+  // ];
+private recipes: Recipe[] = [
+  
+      new Recipe('North Indian', 'Good Maincourse', '../../assets/merlin_146234352_d7bc8486-b067-4cff-a4c0-7741f166fb60-articleLarge.jpg',[
+        new Ingredient('Meat',1),
+        new Ingredient('FrenchFries',2)
+      ])
+    ];
+setRecipes(recipes: Recipe[]){
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+}
 
   getRecipes() {
 
