@@ -17,6 +17,7 @@ import { ShoppingListService } from './services/shopping-list.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { DataStorageService } from './services/data-storage.service';
+import { RecipesResolverService } from './services/recipes-resolver.service';
 
 @NgModule({
   declarations: [

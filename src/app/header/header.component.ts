@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchRecipes(){
-    this.savedata.FetchRecipes();
+    this.savedata.FetchRecipes().subscribe();
   }
 
 }
