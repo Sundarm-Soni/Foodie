@@ -11,16 +11,17 @@
         <ul class="nav navbar-nav">
             <!-- <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
             <li><a href="#" (click)="onSelect('Shopping-list')">Shopping List</a></li> -->
-            <li  routerLinkActive = "active"><a  routerLink="/auth">Authenticate</a></li>
-            <li  routerLinkActive = "active"><a routerLink="/recipes">Recipe List</a></li> 
-            <li  routerLinkActive = "active"><a  routerLink="/shoppinglist">Shopping List</a></li>
+            <li  routerLinkActive = "active"  *ngIf="!isAuthenticated"><a  routerLink="/auth">Authenticate</a></li>
+            <li  routerLinkActive = "active"  *ngIf = "isAuthenticated"><a routerLink="/recipes">Recipe List</a></li> 
+            <li  routerLinkActive = "active" ><a  routerLink="/shoppinglist" >Shopping List</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" appDropdown>
+            <li *ngIf = "isAuthenticated"><a  style="cursor:pointer;" >Logout</a></li>
+            <li class="dropdown" appDropdown *ngIf="isAuthenticated">
                 <a class="dropdown-toggle" style="cursor:pointer;" role="button">Manage<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                       <li><a style="cursor:pointer;" (click)="saveData()">Save Data</a></li>
-                    <li><a style="cursor:pointer;" (click)="fetchRecipes()">Fetch Data</a></li>
+                    <li ><a style="cursor:pointer;" (click)="fetchRecipes()">Fetch Data</a></li>
                 </ul>
             </li>
         </ul>
