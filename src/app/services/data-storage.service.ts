@@ -12,7 +12,7 @@ export class DataStorageService {
 
   storeRecipes(){
     const recipes = this.recipeService.getRecipes();
-    this.http.put('https://course-recipe-book-b4a9f.firebaseio.com/recipes.json',recipes).subscribe(response=>{
+    this.http.put<Recipe[]>('https://course-recipe-book-b4a9f.firebaseio.com/recipes.json',recipes).subscribe(response=>{
       console.log(response);
     });
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService, AuthResponseData } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class AuthComponent  {
    islogin = true;
    isLoadingSpinner = false;
+   error: string = null;
   constructor(private authservice: AuthService) { }
 
 
@@ -23,21 +25,23 @@ export class AuthComponent  {
     }
     const email = authform.value.email;
     const password = authform.value.password;
+    let authObs: Observable<AuthResponseData>;
     this.isLoadingSpinner = true;
     if(this.islogin){
-      //
+      authObs = this.authservice.Login(email, password);
     }
     else{
-      this.authservice.Signup(email, password).subscribe(response => {console.log(response)
+     authObs =  this.authservice.Signup(email, password);
+    }
+    authObs.subscribe(response => {console.log(response)
       this.isLoadingSpinner = false;
       },
-      error=>{
-        console.log(error);
+      errorMessage=>{
+        console.log(errorMessage);
+        this.error = errorMessage;
         this.isLoadingSpinner = false;
       }
       );
-    }
-    
     authform.reset();
   }
 }
