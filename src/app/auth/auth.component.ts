@@ -38,8 +38,8 @@ export class AuthComponent  {
       this.isLoadingSpinner = false;
       },
       errorMessage=>{
-        console.log(errorMessage);
         this.error = errorMessage;
+        console.log(this.error);
         this.isLoadingSpinner = false;
       }
       );

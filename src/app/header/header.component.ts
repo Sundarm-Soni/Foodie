@@ -24,7 +24,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   }
 
-
+  Logout(){
+    this.authservice.logout();
+  }
   onSelect(feature: string){
       this.featureSelected.emit(feature);
 

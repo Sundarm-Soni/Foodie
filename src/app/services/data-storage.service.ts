@@ -20,16 +20,8 @@ export class DataStorageService {
   }
 
   FetchRecipes(){
-    return this.authService.user.pipe(
-    take(1), 
-    exhaustMap(user => {
-      return this.http.get<Recipe[]>('https://course-recipe-book-b4a9f.firebaseio.com/recipes.json',{
-        params: new HttpParams().set('auth', user.token)
-      }
-      );
-    }),
-    map(recipes=>{
-      return recipes.map(recipe=>{
+        return this.http.get<Recipe[]>('https://course-recipe-book-b4a9f.firebaseio.com/recipes.json').pipe(map(recipes=>{
+        return recipes.map(recipe=>{
         return {...recipe,ingredients: recipe.ingredients ? recipe.ingredients : []};
       });
     }),
