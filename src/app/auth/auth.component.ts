@@ -33,7 +33,8 @@ export class AuthComponent  {
     else{
      authObs =  this.authservice.Signup(email, password);
     }
-    authObs.subscribe(response => {console.log(response)
+    authObs.subscribe(response => {
+      console.log(response);
       this.isLoadingSpinner = false;
       },
       errorMessage=>{
