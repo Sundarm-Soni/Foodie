@@ -32,6 +32,7 @@ export class AuthComponent  {
     }
     else{
      authObs =  this.authservice.Signup(email, password);
+     this.authservice.autologin();
     }
     authObs.subscribe(response => {
       console.log(response);
