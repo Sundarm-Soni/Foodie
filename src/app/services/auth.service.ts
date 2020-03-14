@@ -59,7 +59,7 @@ export class AuthService {
     if(this.tokenExpirationTimer){
       clearTimeout(this.tokenExpirationTimer);
     }
-  }
+  } 
 
   autoLogout(expirationDuration: number){
     this.tokenExpirationTimer = setTimeout(()=>{
@@ -84,6 +84,7 @@ private handleAuthentication(email: string, userId: string, token: string, expir
     token, 
     expirationDate);
   this.user.next(user);
+  this.router.navigate(['/recipes']);
   this.autoLogout(expiresIn * 1000);
   localStorage.setItem('userData', JSON.stringify(user));
 }
